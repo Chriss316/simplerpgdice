@@ -35,7 +35,7 @@ function DICE_ADJUSTOR(parent, x, y, w, dice_set, dice_name, text_colour='#00000
 	inc.className = 'increment';
 	inc.type = 'button';
 	inc.value = '+';
-	inc.onclick = function() { 
+	inc.onclick = function() {
 		dice_set['add_' + dice_name]();
 
 		value++;
@@ -48,37 +48,45 @@ function DICE_ADJUSTOR(parent, x, y, w, dice_set, dice_name, text_colour='#00000
 	container.appendChild(inc);
 }
 
-
-
 function create_dice(face, parent, color) {
 	let dice = document.createElement('DIV');
 	dice.className = 'dice';
 	dice.style.backgroundColor = color;
 
-	let icon = document.createElement('img');
-	icon.className = 'dice_face_center';
-	icon.src = 'img/' + face[0] + '.png';
+	// If face value is not an int load dice face image(s)
+	// Otherwise display dice face as a value
+	if(!intCheck(face[0])) {
+		let icon = document.createElement('img');
+		icon.className = 'dice_face_center';
+		icon.src = 'img/' + face[0] + '.png';
 
-	dice.appendChild(icon);
+		dice.appendChild(icon);
 
-	// If dice has 2 icons on the face, create the second icon
-	// and update the first face from center to top left
-	if(face.length === 2) {
-		icon.className = 'dice_face_top_left';
+		// If dice has 2 icons on the face, create the second icon
+		// and update the first face from center to top left
+		if(face.length === 2) {
+			icon.className = 'dice_face_top_left';
 
-		let icon2 = document.createElement('img');
-		icon2.className = 'dice';
-		icon2.className = 'dice_face_bottom_right';
-		icon2.src = 'img/' + face[1] + '.png';
+			let icon2 = document.createElement('img');
+			icon2.className = 'dice';
+			icon2.className = 'dice_face_bottom_right';
+			icon2.src = 'img/' + face[1] + '.png';
 
-		dice.appendChild(icon2);
+			dice.appendChild(icon2);
+		}
+	} else {
+		let num_icon = document.createElement('LABEL');
+		num_icon.className = 'num_icon';
+		num_icon.style.color = '#FFFFFF';
+		num_icon.innerHTML = face[0];
+
+		dice.appendChild(num_icon);
 	}
 
 	parent.appendChild(dice);
 }
 
-function roll_dice(dice_set) {
-	let dice_tray = document.getElementById('dice_tray');
+function roll_dice(dice_set, dice_tray) {
 	dice_tray.innerHTML = '';
 
 	dice_set.new_dice();

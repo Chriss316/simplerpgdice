@@ -22,7 +22,7 @@
 #dice_wrapper {
 	position: absolute;
 	display: inline-block;
-	width: calc(100% - 66px);
+	width: calc(100% - 90px); /* - roll_wrapper width + 10 */
 	height: 100%;
 	overflow-x: auto;
 	overflow-y: hidden;
@@ -107,6 +107,15 @@
 	left: 50%;
 	top: 50%;
 	transform: translate(-50%, -50%);
+}
+.num_icon {
+	position: absolute;
+	text-align: center;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	font-size: 3.0em;
+	font-family: verdana;
 }
 .dice_face_top_left {
 	position: absolute;
