@@ -1,0 +1,124 @@
+@charset "utf-8";
+
+#dice_selector {
+	position: absolute;
+	display: block;
+	top: 10px;
+	left: 50%;
+	width: 200px;
+	height: 40px;
+	transform: translate(-50%, 0%);
+}
+
+#dice_jail {
+	position: absolute;
+	left: 50%;
+	top: 70px;
+	width: 70%;
+	height: 120px;
+	transform: translate(-50%, 0%);
+	border: 2px solid #000000;
+}
+#dice_wrapper {
+	position: absolute;
+	display: inline-block;
+	width: calc(100% - 66px);
+	height: 100%;
+	overflow-x: auto;
+	overflow-y: hidden;
+}
+.dice_adjustor {
+	position: absolute;
+	width: 66px;
+	height: 25px;
+	border: 1px solid #000000;
+}
+.decrement, .increment {
+	position: absolute;
+	height: 20px;
+	top: 50%;
+	transform: translate(0%, -50%);
+	cursor: pointer;
+}
+.decrement {
+	left: 4px;
+}
+.increment {
+	right: 4px;
+}
+.dice_qty {
+	position: absolute;
+	top: -65px;
+	width: 100%;
+	text-align: center;
+	font-size: 2.8em;
+	font-family: verdana;
+}
+
+#roll_wrapper {
+	position: absolute;
+	top: 2px;
+	right: 2px;
+	width: 80px;
+	height: 114px;
+	top: 50%;
+	transform: translate(0%, -50%);
+	border: 1px solid #000000;
+}
+
+#roll {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	cursor: pointer;
+}
+
+#dice_tray {
+	position: absolute;
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	align-content: center;
+	width: 70%;
+	height: 60%;
+	top: 210px;
+	left: 50%;
+	margin-bottom: 20px;
+	transform: translate(-50%, 0%);
+	border: 2px solid #000000;
+	overflow-y: auto;
+}
+
+.dice {
+	position: relative;
+	flex: 0 0 auto;
+	width: 150px;
+	height: 150px;
+	margin: 10px;
+	border-radius: 10px;
+	border: 2px solid #737373;
+}
+.dice_face_center {
+	position: absolute;
+	width: 50%;
+	height: 50%;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+}
+.dice_face_top_left {
+	position: absolute;
+	width: 50%;
+	height: 50%;
+	left: 5px;
+	top: 5px;
+}
+.dice_face_bottom_right {
+	position: absolute;
+	width: 50%;
+	height: 50%;
+	right: 5px;
+	bottom: 5px;
+}

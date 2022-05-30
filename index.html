@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/base.css" media="screen" id="base-theme" />
+		<script src="js/rng.js" defer></script>
+		<script src="js/dice.js" defer></script>
+		<script src="js/dice_shapes.js" defer></script>
+		<script src="js/eote_dice.js" defer></script>
+		<script src="js/eote_dice_tray.js" defer></script>
+	</head>
+	<body>
+		<select id="dice_selector">
+			<option>Edge of the Empire</option>
+			<option>More coming soon...</option>
+		</select>
+		<div id="dice_jail">
+			<div id="dice_wrapper"></div>
+			<div id="roll_wrapper">
+				<input type="button" id="roll" value="ROLL">
+			</div>
+		</div>
+		<div id="dice_tray"></div>
+
+		<script>
+			// TODOs: create dice set selector
+			//        make code more dynamic
+
+			// Load the selected dice set.
+			window.addEventListener('load', function() {
+				let dice_jail = document.getElementById('dice_wrapper');
+
+				// TODO START: Make the following its own class
+				let dice_set = new EOTE_DICE_TRAY();
+
+				d4(dice_jail, 7, 10, 75, 66, eote_colours.ability);
+				DICE_ADJUSTOR(dice_jail, 7, 82, 75, dice_set, 'ability_count');
+
+				d4(dice_jail, 102, 10, 75, 66, eote_colours.difficulty);
+				DICE_ADJUSTOR(dice_jail, 102, 82, 75, dice_set, 'difficulty_count', '#FFFFFF');
+
+				d12(dice_jail, 197, 10, 66, 66, eote_colours.force, "#000000", '2');
+				DICE_ADJUSTOR(dice_jail, 197, 82, 66, dice_set, 'force_count');
+
+				d12(dice_jail, 283, 10, 66, 66, eote_colours.proficiency);
+				DICE_ADJUSTOR(dice_jail, 283, 82, 66, dice_set, 'proficiency_count');
+
+				d12(dice_jail, 369, 10, 66, 66, eote_colours.challenge);
+				DICE_ADJUSTOR(dice_jail, 369, 82, 66, dice_set, 'challenge_count');
+
+				d6(dice_jail, 465, 10, 66, 66, eote_colours.boost);
+				DICE_ADJUSTOR(dice_jail, 465, 82, 66, dice_set, 'boost_count');
+
+				d6(dice_jail, 561, 10, 66, 66, eote_colours.setback);
+				DICE_ADJUSTOR(dice_jail, 561, 82, 66, dice_set, 'setback_count', '#FFFFFF');
+				// TODO END
+
+				// Roll the chosen dice in a set
+				document.getElementById('roll').addEventListener('click', function() {
+					roll_dice(dice_set);
+				});
+			});
+		</script>
+	</body>
+</html>
